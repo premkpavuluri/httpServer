@@ -12,7 +12,7 @@ const main = () => {
     });
   });
 
-  const PORT = 8888;
+  const PORT = 80;
   server.listen(PORT, () => console.log(`Server listening on ${PORT}`));
 };
 

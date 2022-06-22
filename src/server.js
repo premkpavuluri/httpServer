@@ -1,3 +1,7 @@
+const response = (statusCode, message) => {
+  return `HTTP/1.1 ${statusCode} OK\r\n\r\n${message}\r\n`;
+};
+
 const parseRequestLine = (line) => {
   const [method, uri, httpVersion] = line.split(' ');
   return { method, uri, httpVersion };
@@ -32,10 +36,14 @@ const parseRequest = (chunk) => {
 };
 
 const handleRequest = (socket, request) => {
-  const response = 'HTTP/1.1 200 OK\r\n\r\nhello\r\n';
 
-  console.log(request);
-  socket.write(response);
+  const { uri } = request;
+  if (uri === '/') {
+    socket.write(response(200, 'At root'));
+    return;
+  }
+
+  socket.write(response(400, 'Unknown'));
 };
 
 module.exports = { parseRequest, handleRequest };
