@@ -1,5 +1,5 @@
 const { createServer } = require('net');
-const { handleRequest } = require('./src/server.js');
+const { handleRequest } = require('./src/handler.js');
 const { parseRequest } = require('./src/parseRequest.js');
 
 const main = (PORT, handler) => {

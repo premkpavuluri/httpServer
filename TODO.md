@@ -6,7 +6,8 @@
     - [ ] status code and it's corresponding status code name
     - [ ] HTTP version
   - [ ] Make response as an entity.
-
+  - [ ] Pass response to handleRequest instead of socket.
+  
 - **DONE:**
   - [x] parameterize the port and handler
   - [x] Extract the parse functionality into other file
