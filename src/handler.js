@@ -8,6 +8,11 @@ const handleRequest = (response, request) => {
     return;
   }
 
+  if (uri === '/prem') {
+    response.send(html('Hey Prem‸'));
+    return;
+  }
+
   response.statusCode = 404;
   response.send(html('Unknown'), 400);
 };

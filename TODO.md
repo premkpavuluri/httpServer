@@ -5,6 +5,7 @@
   - [x] Make handleRequest to appropriate response
     - [ ] status code and it's corresponding status code name
     - [ ] HTTP version
+  - [ ] Make file serving handler
 
 - **DONE:**
   - [x] Pass response to handleRequest instead of socket.
