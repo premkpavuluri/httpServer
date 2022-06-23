@@ -1,5 +1,6 @@
 const assert = require('assert');
-const { parseRequest, handleRequest } = require('../src/server.js');
+const { handleRequest } = require('../src/server.js');
+const { parseRequest } = require('../src/parseRequest.js');
 
 describe('parseRequest', () => {
   it('Should parse the request line', () => {
@@ -30,27 +31,27 @@ describe('parseRequest', () => {
 describe('handleRequest', () => {
   it('Should write to the socket if URI is matched', () => {
     const request = { method: 'GET', uri: '/', httpVersion: 'HTTP/1.1' };
-    const logger = [];
+    const content = '<html><body>Hello world</body></html>';
+    const expected = `HTTP/1.1 200 OK\r\n\r\n${content}\r\n`;
+    let actualResponse;
     const mockedSocket = {
-      write: (chunk) => logger.push(chunk)
+      write: (chunk) => actualResponse = chunk
     };
 
-    const expected = ['HTTP/1.1 200 OK\r\n\r\nAt root\r\n'];
     handleRequest(mockedSocket, request);
-
-    assert.deepStrictEqual(logger, expected);
+    assert.deepStrictEqual(actualResponse, expected)
   });
 
   it('Should reply with unknown if URI does not match', () => {
     const request = { method: 'GET', uri: 'hey', httpVersion: 'HTTP/1.1' };
-    const logger = [];
+    const content = '<html><body>Unknown</body></html>';
+    const expected = `HTTP/1.1 400 OK\r\n\r\n${content}\r\n`;
+    let actualResponse;
     const mockedSocket = {
-      write: (chunk) => logger.push(chunk)
+      write: (chunk) => actualResponse = chunk
     };
 
-    const expected = ['HTTP/1.1 400 OK\r\n\r\nUnknown\r\n'];
     handleRequest(mockedSocket, request);
-
-    assert.deepStrictEqual(logger, expected);
+    assert.deepStrictEqual(actualResponse, expected)
   });
 });
