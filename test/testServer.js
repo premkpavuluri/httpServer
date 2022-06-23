@@ -35,7 +35,7 @@ describe('handleRequest', () => {
     const expected = `HTTP/1.1 200 OK\r\n\r\n${content}\r\n`;
     let actualResponse;
     const mockedSocket = {
-      write: (chunk) => actualResponse = chunk
+      send: (chunk) => actualResponse = chunk
     };
 
     handleRequest(mockedSocket, request);
@@ -48,7 +48,7 @@ describe('handleRequest', () => {
     const expected = `HTTP/1.1 400 OK\r\n\r\n${content}\r\n`;
     let actualResponse;
     const mockedSocket = {
-      write: (chunk) => actualResponse = chunk
+      send: (chunk) => actualResponse = chunk
     };
 
     handleRequest(mockedSocket, request);
