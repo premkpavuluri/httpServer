@@ -9,7 +9,7 @@ const handleRequest = (response, request) => {
   }
 
   if (uri === '/prem') {
-    response.send(html('Hey Prem‸'));
+    response.send(html('Hey Prem'));
     return;
   }
 

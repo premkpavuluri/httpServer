@@ -5,9 +5,10 @@
   - [x] Make handleRequest to appropriate response
     - [ ] status code and it's corresponding status code name
     - [ ] HTTP version
-  - [ ] Make file serving handler
+  - [ ] separate the status-line,headers and body in response.send.
 
 - **DONE:**
+  - [x] Make file serving handler
   - [x] Pass response to handleRequest instead of socket.
   - [x] Make response as an entity.
   - [x] parameterize the port and handler

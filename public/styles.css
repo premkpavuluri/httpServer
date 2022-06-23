@@ -1,0 +1,61 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  width: 1280px;
+  font-size: 30px;
+  margin: 20px auto;
+  font-family: impact;
+}
+
+.sky {
+  height: 50%;
+}
+.sky > div {
+  height: 20%;
+}
+
+.layer1 {
+  background-color: hsl(210 100% 84% / 1);
+}
+.layer2 {
+  background-color: hsl(210 100% 86% / 1);
+}
+.layer3 {
+  background-color: hsl(210 100% 89% / 1);
+}
+.layer4 {
+  background-color: hsl(210 100% 93% / 1);
+}
+.layer5 {
+  background-color: hsl(208 100% 95% / 1);
+}
+
+.sea {
+  background-color: dodgerblue;
+  text-align: center;
+  padding: 1px;
+}
+
+.sea > h1 {
+  font-size: 6em;
+  color: hsl(210deg 89% 24% / 58%) ;
+  text-shadow: 2px 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.move-up {
+  position: relative;
+  bottom: 0.4em;
+}
+
+.sun {
+  width: 100px;
+  display: inline-block;
+  background-color: gold;
+  border-radius: 50%;
+  box-shadow: 10px 10px 10px yellow, -10px -10px 10px yellow, 10px -10px 10px yellow, -10px 10px 10px yellow;
+  position: relative;
+  left: 80%;
+  top: 30%;
+}
