@@ -2,7 +2,7 @@
 
 - **TODO:**
   - [ ] Extract the onRequest from the main function.
-  - [ ] Make handleRequest to appropriate response
+  - [x] Make handleRequest to appropriate response
     - [ ] status code and it's corresponding status code name
     - [ ] HTTP version
 
