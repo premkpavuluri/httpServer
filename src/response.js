@@ -1,5 +1,7 @@
-const httpResponse = (message, statusCode) => {
-  return `HTTP/1.1 ${statusCode} OK\r\n\r\n${message}\r\n`;
+const EOL = '\r\n';
+
+const httpResponse = (statusCode) => {
+  return `HTTP/1.1 ${statusCode} OK${EOL}`;
 };
 
 class Response {
@@ -16,7 +18,9 @@ class Response {
   }
 
   send(content) {
-    this.#socket.write(httpResponse(content, this.#statusCode));
+    this.#socket.write(httpResponse(this.#statusCode));
+    this.#socket.write(EOL);
+    this.#socket.write(content);
     this.#socket.end();
   }
 }

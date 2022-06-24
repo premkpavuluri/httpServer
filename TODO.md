@@ -5,9 +5,10 @@
   - [x] Make handleRequest to appropriate response
     - [ ] status code and it's corresponding status code name
     - [ ] HTTP version
-  - [ ] separate the status-line,headers and body in response.send.
+  - [ ] Make method for headers.
 
 - **DONE:**
+  - [x] separate the status-line,headers and body in response.send.
   - [x] Give 404 if request is not valid in serveFileContent.
   - [x] Make file serving handler
   - [x] Pass response to handleRequest instead of socket.
