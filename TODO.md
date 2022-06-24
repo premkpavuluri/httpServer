@@ -8,6 +8,7 @@
   - [ ] separate the status-line,headers and body in response.send.
 
 - **DONE:**
+  - [x] Give 404 if request is not valid in serveFileContent.
   - [x] Make file serving handler
   - [x] Pass response to handleRequest instead of socket.
   - [x] Make response as an entity.

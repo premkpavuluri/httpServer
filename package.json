@@ -8,11 +8,14 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "node server.js"
+    "start": "node server.js",
+    "startnodemon": "nodemon server.js",
+    "watch": "mocha -w"
   },
   "author": "prem",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^10.0.0"
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.18"
   }
 }
