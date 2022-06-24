@@ -2,8 +2,10 @@
 
 - **TODO:**
   - [ ] Extract the onRequest from the main function.
+  - [ ] Make handler to go through requestHandlers.
 
 - **DONE:**
+  - [x] Make dynamic response: no of times page hits.
   - [x] Make method for status line.
   - [x] Make handleRequest to appropriate response
     - [x] status code and it's corresponding status code name

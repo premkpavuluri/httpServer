@@ -1,4 +1,6 @@
-const html = (body) => `<html><body>${body}</body></html>`;
+const html = (body) => `<html><body><h1>${body}</h1></body></html>`;
+
+let pageHits = 0;
 
 const handleRequest = (response, request) => {
 
@@ -13,8 +15,14 @@ const handleRequest = (response, request) => {
     return;
   }
 
+  if (uri === '/views') {
+    pageHits++;
+    response.send(html(`No of hits: ${pageHits}`));
+    return;
+  }
+
   response.statusCode = 404;
-  response.send(html('Unknown'), 400);
+  response.send(html('Unknown'));
 };
 
 module.exports = { handleRequest };

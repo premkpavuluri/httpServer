@@ -4,7 +4,7 @@ const { parseRequest } = require('./src/parseRequest.js');
 const { Response } = require('./src/response.js');
 const { serveFileContent } = require('./src/serveFileContent.js');
 
-const main = (PORT, handler) => {
+const startServer = (PORT, handler) => {
   const server = createServer((socket) => {
 
     socket.on('data', (chunk) => {
@@ -18,5 +18,5 @@ const main = (PORT, handler) => {
   server.listen(PORT, () => console.log(`Server listening on ${PORT}`));
 };
 
-// main(80, handleRequest);
-main(80, serveFileContent);
+startServer(80, handleRequest);
+// startServer(80, serveFileContent);
