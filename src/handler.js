@@ -7,22 +7,21 @@ const handleRequest = (response, request) => {
   const { uri } = request;
   if (uri === '/') {
     response.send(html('Hello world'));
-    return;
+    return true;
   }
 
   if (uri === '/prem') {
     response.send(html('Hey Prem'));
-    return;
+    return true;
   }
 
   if (uri === '/views') {
     pageHits++;
     response.send(html(`No of hits: ${pageHits}`));
-    return;
+    return true;
   }
 
-  response.statusCode = 404;
-  response.send(html('Unknown'));
+  return false;
 };
 
 module.exports = { handleRequest };

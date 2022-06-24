@@ -18,14 +18,14 @@ const serveFileContent = (response, { uri }) => {
   const fileName = `./public${uri}`;
 
   if (!fs.existsSync(fileName)) {
-    response.statusCode = 404;
-    response.send('page not found');
-    return;
+    return false;
   }
 
   response.setHeaders('Content-Type', determineMimeType(fileName));
   const content = fs.readFileSync(fileName);
   response.send(content);
+
+  return true;
 };
 
 module.exports = { serveFileContent };
