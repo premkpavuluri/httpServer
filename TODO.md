@@ -2,12 +2,12 @@
 
 - **TODO:**
   - [ ] Extract the onRequest from the main function.
-  - [x] Make handleRequest to appropriate response
-    - [ ] status code and it's corresponding status code name
-    - [ ] HTTP version
-  - [ ] Make method for status line.
 
 - **DONE:**
+  - [x] Make method for status line.
+  - [x] Make handleRequest to appropriate response
+    - [x] status code and it's corresponding status code name
+    - [x] HTTP version
   - [x] Make method for headers.
   - [x] separate the status-line,headers and body in response.send.
   - [x] Give 404 if request is not valid in serveFileContent.

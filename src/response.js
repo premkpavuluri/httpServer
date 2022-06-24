@@ -1,7 +1,8 @@
 const EOL = '\r\n';
 
-const httpResponse = (statusCode) => {
-  return `HTTP/1.1 ${statusCode} OK${EOL}`;
+const statusMessage = {
+  200: 'ok',
+  404: 'not found'
 };
 
 class Response {
@@ -19,6 +20,11 @@ class Response {
     this.#statusCode = code;
   }
 
+  #getStatusLine() {
+    const message = statusMessage[this.#statusCode];
+    return `HTTP/1.1 ${this.#statusCode} ${message}${EOL}`;
+  }
+
   setHeaders(header, value) {
     this.#headers[header] = value;
   }
@@ -31,7 +37,7 @@ class Response {
 
   send(content) {
     this.setHeaders('Content-Length', content.length);
-    this.#socket.write(httpResponse(this.#statusCode));
+    this.#socket.write(this.#getStatusLine());
 
     this.#sendHeaders();
     this.#socket.write(EOL);
