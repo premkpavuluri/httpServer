@@ -1,8 +1,10 @@
 const EOL = '\r\n';
 
 const statusMessage = {
-  200: 'ok',
-  404: 'not found'
+  200: 'OK',
+  404: 'Not Found',
+  301: 'Permanent Redirect',
+  302: 'Temporary Redirect'
 };
 
 class Response {
