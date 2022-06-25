@@ -10,20 +10,19 @@ const determineMimeType = (fileName) => {
   return MIMETYPES[fileType];
 };
 
-const serveFileContent = (response, { uri }) => {
+const serveFileContent = (response, { uri }, path) => {
   if (uri === '/') {
     uri = '/index.html';
   }
 
-  const fileName = `./public${uri}`;
+  const fileName = `${path}${uri}`;
 
   if (!fs.existsSync(fileName)) {
     return false;
   }
 
   response.setHeaders('Content-Type', determineMimeType(fileName));
-  const content = fs.readFileSync(fileName);
-  response.send(content);
+  fs.readFile(fileName, (err, data) => response.send(data));
 
   return true;
 };

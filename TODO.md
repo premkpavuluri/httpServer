@@ -2,9 +2,9 @@
 
 - **TODO:**
   - [ ] Extract the onRequest from the main function.
-  - [ ] Parameterize the resource directory.
 
 - **DONE:**
+  - [x] Parameterize the resource directory.
   - [x] Implement count method to record requests.
   - [x] Make handler to go through requestHandlers.
   - [x] Make dynamic response: no of times page hits.

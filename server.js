@@ -7,19 +7,19 @@ const { serveFileContent } = require('./src/serveFileContent.js');
 const { countViews } = require('./src/viewHandler.js');
 
 const handle = (handlers) => {
-  return (response, request) => {
-    return handlers.some(handler => handler(response, request));
+  return (response, request, path) => {
+    return handlers.some(handler => handler(response, request, path));
   }
 };
 
-const startServer = (PORT, requestHandler) => {
+const startServer = (PORT, requestHandler, path) => {
   const server = createServer((socket) => {
 
     socket.on('data', (chunk) => {
       const request = parseRequest(chunk.toString());
       console.log(request.method, request.uri);
       const response = new Response(socket);
-      requestHandler(response, request);
+      requestHandler(response, request, path);
     });
   });
 
@@ -28,4 +28,4 @@ const startServer = (PORT, requestHandler) => {
 
 const handlers = [countViews(), serveFileContent, handleRequest, notFoundHandler];
 
-startServer(80, handle(handlers));
+startServer(80, handle(handlers), process.argv.slice(2)[0]);
