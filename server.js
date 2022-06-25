@@ -4,13 +4,11 @@ const { parseRequest } = require('./src/parseRequest.js');
 const { Response } = require('./src/response.js');
 const { notFoundHandler } = require('./src/notFoundHandler.js');
 const { serveFileContent } = require('./src/serveFileContent.js');
+const { countViews } = require('./src/viewHandler.js');
 
-const handle = (response, request) => {
-  const handlers = [serveFileContent, handleRequest, notFoundHandler];
-  for (const handler of handlers) {
-    if (handler(response, request)) {
-      return true;
-    }
+const handle = (handlers) => {
+  return (response, request) => {
+    return handlers.some(handler => handler(response, request));
   }
 };
 
@@ -28,4 +26,6 @@ const startServer = (PORT, requestHandler) => {
   server.listen(PORT, () => console.log(`Server listening on ${PORT}`));
 };
 
-startServer(80, handle);
+const handlers = [countViews(), serveFileContent, handleRequest, notFoundHandler];
+
+startServer(80, handle(handlers));
