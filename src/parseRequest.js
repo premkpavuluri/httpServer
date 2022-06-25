@@ -1,6 +1,30 @@
+const parseParams = (queryString) => {
+  const queryParams = {};
+  const params = queryString.split('&');
+
+  params.forEach(param => {
+    const [name, value] = param.split('=');
+    queryParams[name] = value;
+  });
+
+  return queryParams;
+};
+
+const parseUri = (rawUri) => {
+  let queryParams = {};
+  const [uri, queryString] = rawUri.split('?');
+
+  if (queryString) {
+    queryParams = parseParams(queryString);
+  }
+
+  return { uri, queryParams };
+};
+
 const parseRequestLine = (line) => {
-  const [method, uri, httpVersion] = line.split(' ');
-  return { method, uri, httpVersion };
+  const [method, rawUri, httpVersion] = line.split(' ');
+  const { uri, queryParams } = parseUri(rawUri);
+  return { method, uri, queryParams, httpVersion };
 };
 
 const parseHeader = (line) => {
